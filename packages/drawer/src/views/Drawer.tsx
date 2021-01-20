@@ -619,8 +619,16 @@ export default class DrawerView extends React.Component<Props> {
       <PanGestureHandler
         activeOffsetX={[-SWIPE_DISTANCE_MINIMUM, SWIPE_DISTANCE_MINIMUM]}
         failOffsetY={[-SWIPE_DISTANCE_MINIMUM, SWIPE_DISTANCE_MINIMUM]}
-        onGestureEvent={this.handleGestureEvent}
-        onHandlerStateChange={this.handleGestureStateChange}
+        // onGestureEvent={this.handleGestureEvent}
+        // onHandlerStateChange={this.handleGestureStateChange}
+        onGestureEvent={({ nativeEvent }) => {
+          this.touchX.setValue(nativeEvent.x);
+          this.gestureX.setValue(nativeEvent.translationX);
+          this.velocityX.setValue(nativeEvent.velocityX);
+        }}
+        onHandlerStateChange={({ nativeEvent }) => {
+          this.gestureState.setValue(nativeEvent.state);
+        }}
         hitSlop={hitSlop}
         enabled={drawerType !== 'permanent' && gestureEnabled && swipeEnabled}
         {...gestureHandlerProps}
@@ -668,7 +676,12 @@ export default class DrawerView extends React.Component<Props> {
               ) : (
                 <TapGestureHandler
                   enabled={gestureEnabled}
-                  onHandlerStateChange={this.handleTapStateChange}
+                  // onHandlerStateChange={this.handleTapStateChange}
+                  onHandlerStateChange={({ nativeEvent }) => {
+                    if (nativeEvent.oldState === GestureState.ACTIVE) {
+                      this.manuallyTriggerSpring.setValue(TRUE);
+                    }
+                  }}
                 >
                   <Overlay progress={progress} style={overlayStyle as any} />
                 </TapGestureHandler>
