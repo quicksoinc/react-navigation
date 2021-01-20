@@ -65,9 +65,7 @@ export default function HeaderSegment({ scene, layout }: DrawerHeaderProps) {
     <TouchableItem
       accessible
       accessibilityRole="button"
-      accessibilityComponentType="button"
       accessibilityLabel={headerLeftAccessibilityLabel}
-      accessibilityTraits="button"
       delayPressIn={0}
       onPress={() =>
         scene.descriptor.navigation.dispatch(DrawerActions.toggleDrawer())
