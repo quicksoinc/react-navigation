@@ -7,9 +7,9 @@
   "compilerOptions": {
     "outDir": "./lib/typescript",
     "baseUrl": ".",
-    // "paths": {
-    //   "@react-navigation/*": ["./packages/*/src"]
-    // },
+    "paths": {
+      "@react-navigation/*": ["./packages/*/src"]
+    },
     "composite": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
