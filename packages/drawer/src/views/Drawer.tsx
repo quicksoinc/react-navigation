@@ -36,7 +36,7 @@ const {
   cond,
   divide,
   eq,
-  event,
+  // event,
   greaterThan,
   lessThan,
   max,
@@ -498,35 +498,35 @@ export default class DrawerView extends React.Component<Props> {
     abs(divide(this.translateX, this.drawerWidth))
   );
 
-  private handleGestureEvent = event([
-    {
-      nativeEvent: {
-        x: this.touchX,
-        translationX: this.gestureX,
-        velocityX: this.velocityX,
-      },
-    },
-  ]);
+  // private handleGestureEvent = event([
+  //   {
+  //     nativeEvent: {
+  //       x: this.touchX,
+  //       translationX: this.gestureX,
+  //       velocityX: this.velocityX,
+  //     },
+  //   },
+  // ]);
 
-  private handleGestureStateChange = event([
-    {
-      nativeEvent: {
-        state: (s: Animated.Value<number>) => set(this.gestureState, s),
-      },
-    },
-  ]);
+  // private handleGestureStateChange = event([
+  //   {
+  //     nativeEvent: {
+  //       state: (s: Animated.Value<number>) => set(this.gestureState, s),
+  //     },
+  //   },
+  // ]);
 
-  private handleTapStateChange = event([
-    {
-      nativeEvent: {
-        oldState: (s: Animated.Value<number>) =>
-          cond(
-            eq(s, GestureState.ACTIVE),
-            set(this.manuallyTriggerSpring, TRUE)
-          ),
-      },
-    },
-  ]);
+  // private handleTapStateChange = event([
+  //   {
+  //     nativeEvent: {
+  //       oldState: (s: Animated.Value<number>) =>
+  //         cond(
+  //           eq(s, GestureState.ACTIVE),
+  //           set(this.manuallyTriggerSpring, TRUE)
+  //         ),
+  //     },
+  //   },
+  // ]);
 
   private handleContainerLayout = (e: LayoutChangeEvent) =>
     this.containerWidth.setValue(e.nativeEvent.layout.width);
